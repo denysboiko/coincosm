@@ -1,0 +1,78 @@
+<span class="title">Send Bitcoins<a class="eyesight"
+                                    href="javascript:hideshow(document.getElementById('adiv'))"><img
+        src="images/eye.svg"/></a></span>
+
+<div class="topusertext" id="adiv">
+    A&nbsp;Bitcoin address, or&nbsp;simply address, is&nbsp;an&nbsp;identifier of&nbsp;27-34 alphanumeric
+    characters, beginning with the number 1&nbsp;or 3, that represents a&nbsp;possible destination for a&nbsp;Bitcoin
+    payment. Addresses can be&nbsp;generated at&nbsp;no&nbsp;cost by&nbsp;any user of&nbsp;Bitcoin. For example,
+    using Bitcoin-Qt, one can click &laquo;New Address&raquo; and be&nbsp;assigned an&nbsp;address. It&nbsp;is&nbsp;also
+    possible to&nbsp;get a&nbsp;Bitcoin address using an&nbsp;account at&nbsp;an&nbsp;exchange or&nbsp;online
+    wallet service.
+</div>
+
+<div class="qrall">
+    <div class="requestqr">
+        <h3>This is your request:</h3>
+        <a href="#"><img src="images/imortqr.svg"></a>
+    </div>
+    <div class="qrman">
+        <a href="#" class="chlink"><i class="fa fa-camera"></i>Take a photo</a>
+        <a href="#"><i class="fa fa-folder"></i>Upload</a>
+    </div>
+</div>
+
+
+<!--	<div class="comissiondiv">Commission fee has an influence on transaction processing speed. 0.0001 BTC is recommended.<input type="text" id="commissionfield" placeholder="0.0001"></div>-->
+
+
+<div id="errors" class="alert alert-danger hidden"></div>
+
+
+<form id="createSendForm" action="#" onsubmit="coinpunk.controllers.tx.create(); return false;" role="form">
+
+    <!--   <div class="form-group hidden-lg">
+           <label for="qrcodeinput" class="col-lg-5 control-label">Scan from QR Code
+               <div class="col-lg-5">
+                   <input class="btn btn-large btn-info" type="file" id="qrcodeinput" name="qrcodeinput" accept="image/*" capture="camera" style="width: 110px">
+               </div>
+       </div>-->
+
+
+    <div class="sendform">
+        <label for="address">Whom </label><input type="text" id="address" name="address"
+                                                 placeholder="Address here"
+                                                 onchange="coinpunk.controllers.tx.calculateFee()">
+
+        <label for="themefield">Theme </label><input type="text" id="themefield" placeholder="Label here">
+        <label for="amount">Amount</label>
+
+        <div class="amountwrapper">
+            <input type="text" id="amount" name="amount" placeholder="0.0000"
+                   oninput="coinpunk.controllers.tx.sendExchangeUpdate()"
+                   onchange="coinpunk.controllers.tx.calculateFee()"><i class="fa fa-btc" id="btcicon"></i></input>
+            <div class="equalsign">≈</div>
+            <input type="text" id="amountExchange" name="amountExchange" placeholder="0.00"
+                   oninput="coinpunk.controllers.tx.sendBTCUpdate()">
+            <i class="fa fa-usd" id="usdicon"></i></input>
+        </div>
+        <div class="sendprintbutt">
+            <a href="#" class="sendbutt buttonsstyle"><i class="fa fa-arrow-right"></i> Send Bitcoins</a><br>
+        </div>
+
+
+    </div>
+    <input id="sendAmount" type="hidden" value="">
+    <input id="changeAddress" type="hidden" value="">
+    <input id="calculatedFee" type="hidden" value="<%- coinpunk.controllers.tx.defaultFee %>">
+
+    <p>A fee of <span id="fee"><%- coinpunk.controllers.tx.defaultFee %></span> will be added.</p>
+
+    <button id="sendButton" type="submit"><i class="fa fa-arrow-right"></i> Send Bitcoins</button>
+
+</form>
+
+
+<script>
+    $("#qrcodeinput").on("change", coinpunk.controllers.tx.scanQR);
+</script>

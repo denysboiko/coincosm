@@ -1,0 +1,61 @@
+<div class="header">
+    <div class="container">
+        <a href="#/" class="logo"><img src="images/logo.svg"/></a>
+        <div class="topms">
+            <% if(coinpunk.wallet) { %>
+            <div class="userid" id="ud">
+                <a href="#" class="userid"><%- coinpunk.wallet.walletId %></a>
+                <div class="usermenu">
+                    <ul>
+                        <li><a href="#/account/settings"><i class="fa fa-gear"></i> Account settings</a></li>
+                        <li><a href="#/signout"><i class="fa fa-sign-out"></i> Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <% } %>
+            <ul id="menu">
+                <li><a href="#">Bitcoin</a>
+                <li><a href="#">Our service</a>
+                <li><a href="#">About us</a>
+                <li><a href="#/buy">Buy Bitcoins</a>
+                <li><a href="#">Support</a>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function DropDown(el) {
+        this.ud = el;
+        this.initEvents();
+    }
+
+    DropDown.prototype = {
+        initEvents : function() {
+            var obj = this;
+            obj.ud.on('click', function(event){
+                $(this).toggleClass('active');
+                event.stopPropagation();
+            });
+        }
+    }
+
+    $(function() {
+        var ud = new DropDown($('#ud'));
+        $(document).click(function() {
+            // all dropdowns
+            $('#ud').removeClass('active');
+        });
+    });
+</script>
+
+<!--
+
+<ul class="nav navbar-nav">
+
+    <li><a href=""><i class="fa fa-arrow-down"></i> My Addresses</a></li>
+    <li><a href=""><i class="fa fa-bars"></i> Transaction History</a></li>
+    <li><a href=""><i class="fa fa-arrow-up"></i> Send</a></li>
+    <li class="hidden-xs hidden-sm"><a href=""><i class="fa fa-download"></i> Import and Export</a></li>
+
+</ul>-->

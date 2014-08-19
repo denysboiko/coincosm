@@ -1,0 +1,83 @@
+    <div id="sidebar" class="sidebar">
+    </div>
+<div class="workspace">
+    <span class="title">Your addresses<a class="eyesight" href="javascript:hideshow(document.getElementById('adiv'))"><img src="images/eye.svg"/></a></span>
+    <div class="topusertext" id="adiv">A&nbsp;Bitcoin address, or&nbsp;simply address, is&nbsp;an&nbsp;identifier of&nbsp;27-34 alphanumeric characters, beginning with the number 1&nbsp;or 3, that represents a&nbsp;possible destination for a&nbsp;Bitcoin payment. Addresses can be&nbsp;generated at&nbsp;no&nbsp;cost by&nbsp;any user of&nbsp;Bitcoin. For example, using Bitcoin-Qt, one can click &laquo;New Address&raquo; and be&nbsp;assigned an&nbsp;address. It&nbsp;is&nbsp;also possible to&nbsp;get a&nbsp;Bitcoin address using an&nbsp;account at&nbsp;an&nbsp;exchange or&nbsp;online wallet service.
+    </div>
+    <div class="buttcontainer"><input id="addressLabel" type="text"><a href="#" onClick="coinpunk.controllers.addresses.generateNewAddress($('#addressLabel').val()); return false;" class="mainbutton buttonsstyle"><i class="fa fa-plus"></i> Add address</a></div>
+
+
+
+
+    <div id="addresses">
+
+      <% if(data.addresses.length == 0) {%>
+
+        <h4>No receive addresses yet.</h4>
+
+      <% } else { %>
+        <!--
+
+          <% for(var i=0;i<data.addresses.length;i++) { %>
+
+
+              <div>
+                <strong><%- data.addresses[i].name || 'No Label' %></strong>
+                <span class="addExchangePrice pull-right" style="color: #33CC33;">
+                  <%- coinpunk.wallet.addressReceivedAmount(data.addresses[i].address) %> BTC
+                </span>
+              </div>
+              <div><%- data.addresses[i].address %></div>
+              
+              <div><a href="#/addresses/request/<%- data.addresses[i].address %>" class="btn btn-primary"><i class="fa fa-qrcode"></i> Request Payment</a></div>
+            </div>
+
+          <hr>
+          <% } %>-->
+
+          <table class="adressbook" id="addressbook">
+            <thead>
+              <tr>
+                  <th  class="firstcolumn">Address</th>
+                  <th></th>
+                  <th>Date created</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<data.addresses.length; i++) { %>
+                <% if(!data.addresses[i].isChange) { %>
+              <tr>
+                  <td class="firstcolumn"><h5><%- data.addresses[i].address %></h5><h6><%- data.addresses[i].name %></h6></td>
+                  <td class="labelcell"></td>
+                  <td class="datecell"><time datetime="2014-07-13">13 Jun<br>2014</time></td>
+                  <td class="qrcell"><!--<a href="#" class="sendbtc"><i class="fa fa-arrow-right"></i> Request money</a>--><a href="#/addresses/request/<%- data.addresses[i].address %>"><div id="<%- data.addresses[i].address %>"></div><img src="images/qr.png"/></a></td>
+              </tr>
+                    <!--<td>
+                      <span class="addExchangePrice">
+                        <%- coinpunk.wallet.addressReceivedAmount(data.addresses[i].address) %> BTC
+                      </span>
+                    </td>
+                    <td>
+                      <!--
+                      <a href="#" class="btn btn-info"><i class="fa fa-edit"></i> Edit Label</a>
+                      <a href="#" class="btn btn-danger"><i class="fa fa-archive"></i> Archive</a>
+
+                    </td>-->
+                    <!--
+                    <td>Create Paper Wallet</td>
+                    <td>Generate</td>
+                    -->
+                <% } %>
+              <% } %>
+            </tbody>
+          </table>
+    <% } %>
+</div>
+    <form onsubmit="coinpunk.controllers.addresses.generateNewAddress($('#addressLabel').val()); return false;">
+       <button class="btn btn-primary"><i class="fa fa-plus"></i> Generate</button>
+        <div id="newAddressDialog" class="alert alert-success alert-dismissable hidden">
+          <button type="btn" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <span id="newAddressMessage"></span>
+        </div>
+    </form>
+</div>

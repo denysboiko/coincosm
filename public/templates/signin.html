@@ -1,0 +1,35 @@
+<div class="container">
+<h1 class="title">Sign In</h1>
+<div id="errors" class="alert alert-error hidden">
+
+</div>
+<form class="authform" action="#" name="sf" onsubmit="coinpunk.controllers.accounts.signin(); return false;" autocapitalize="off">
+    <label for="walletId">Email</label>
+    <input type="text" id="walletId" autocorrect="off" autocapitalize="off" placeholder="Your email">
+    <div class="form-group" id="signinPassword">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password">
+    </div>
+
+<!--<input type="checkbox"><label>Remember me</label>
+
+
+
+    <label class="checkbox checked" for="checkbox2">
+        <span class="icon"></span>
+        <span class="icon-to-fade"></span>
+        <input checked="checked" value="" id="checkbox2" type="checkbox">
+        Remember Me
+    </label>-->
+
+
+    <a href="#" onclick="javascript:document.sf.submit()" class="buttonstyle" role="submit">Sign up</a>
+    <button type="submit" class="buttonstyle"><i class="fa fa-sign-in"></i> Sign in</button>
+
+    <!--
+    <p>New User?</p>
+    <a href="#/signup" class="buttonstyle">Sign up</a>
+    <a href="#/accounts/import">Import</a>
+    -->
+</form>
+</div>

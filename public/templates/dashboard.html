@@ -1,0 +1,41 @@
+<div id="container" class="container">
+    <div id="sidebar" class="sidebar">
+    </div>
+    <div id="workspace" class="workspace">
+        <span class="title">Transactions history<a class="eyesight"
+                                                   href="javascript:hideshow(document.getElementById('adiv'))"><img
+                src="images/eye.svg"/></a></span>
+
+        <div class="topusertext" id="adiv">A&nbsp;Bitcoin address, or&nbsp;simply address, is&nbsp;an&nbsp;identifier of&nbsp;27-34
+            alphanumeric characters, beginning with the number 1&nbsp;or 3, that represents a&nbsp;possible destination
+            for a&nbsp;Bitcoin payment. Addresses can be&nbsp;generated at&nbsp;no&nbsp;cost by&nbsp;any user of&nbsp;Bitcoin.
+            For example, using Bitcoin-Qt, one can click &laquo;New Address&raquo; and be&nbsp;assigned an&nbsp;address.
+            It&nbsp;is&nbsp;also possible to&nbsp;get a&nbsp;Bitcoin address using an&nbsp;account at&nbsp;an&nbsp;exchange
+            or&nbsp;online wallet service.
+        </div>
+
+
+        <div class="col-lg-9 col-lg-offset-1">
+            <% var successMessage = coinpunk.database.getSuccessMessage(); %>
+            <% if(successMessage) { %>
+            <div class="alert alert-success alert-dismissable" style="margin-top: 20px">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <%- successMessage %>
+            </div>
+            <% } %>
+        </div>
+
+
+        <!--
+              <h2><span id="balance"></span> BTC <small style="margin-left: 10px; display: block"><span id="balanceExchange"></span></small></h2>
+              <h5><span id="pendingBalance"></span> BTC pending<small style="margin-left: 10px"><span id="pendingBalanceExchange"></span></small></h5>
+            <div class="row">
+              <p><span id="exchangePrice"></span></p>
+            </div>
+        -->
+
+
+        <div id="receivedTransactions"></div>
+        <div id="sentTransactions"></div>
+    </div>
+</div>

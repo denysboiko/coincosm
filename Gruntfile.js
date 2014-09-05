@@ -26,7 +26,7 @@ module.exports = function(grunt) {
           "screw-ie8": true
         },
         files: {
-          'public/js/all.js': [
+          'public/js/all-2.js': [
             'public/js/lib/jquery.js',
             'public/js/lib/bootstrap.js',
             'public/js/lib/underscore.js',

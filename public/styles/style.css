@@ -204,9 +204,9 @@ body {
 .spacelayer {
     position: relative;
     background-repeat: no-repeat;
-    /*background-size: 100% auto;*/
     color: white;
-    background: #336;
+    background: url(/images/7.jpg) 0px 0px no-repeat;
+    background-size: auto auto;
 }
 
 .top {

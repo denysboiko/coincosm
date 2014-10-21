@@ -3,9 +3,9 @@ coinpunk.controllers.Addresses.prototype = new coinpunk.Controller();
 
 coinpunk.controllers.Addresses.prototype.list = function() {
   var self = this;
-  this.render('addresses/list', {addresses: coinpunk.wallet.receiveAddresses()}, function(id) {
+  this.template('workspace','addresses/list', {addresses: coinpunk.wallet.receiveAddresses()}, function(id) {
     self.updateExchangeRates(id);
-  });
+  }); // ХУЙНЯ (нужно переписать coinpunk.Controller.prototype.template, иначе нахуй оно вообще нужен)
 }
 
 coinpunk.controllers.Addresses.prototype.generateNewAddress = function(label) {

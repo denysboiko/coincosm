@@ -50,9 +50,7 @@
         <div class="amountwrapper">
             <input type="text" id="amount" name="amount" placeholder="0.0000"
                    oninput="coinpunk.controllers.tx.sendExchangeUpdate()"
-                   onchange="coinpunk.controllers.tx.calculateFee()"><i class="fa fa-btc" id="btcicon"></i></input>
-            <div class="equalsign">≈</div>
-            <input type="text" id="amountExchange" name="amountExchange" placeholder="0.00"
+                   onchange="coinpunk.controllers.tx.calculateFee()"><i class="fa fa-btc" id="btcicon"></i></input><div class="equalsign">≈</div><input type="text" id="amountExchange" name="amountExchange" placeholder="0.00"
                    oninput="coinpunk.controllers.tx.sendBTCUpdate()">
             <i class="fa fa-usd" id="usdicon"></i></input>
         </div>

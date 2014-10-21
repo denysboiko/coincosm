@@ -1194,13 +1194,11 @@ h6 {
     margin-right: 15px;
     color: rgb(104, 104, 104);
     font-size: 0;
+    width: 430px;
+    position: relative;
 }
 .sendform input, .sendform label, .sendform div {
     font-size: 14px;
-}
-.sendform {
-    width: 58%;
-    position: relative;
 }
 
 #address {
@@ -1257,7 +1255,7 @@ input[type='text'], input[type="password"], input[type="email"], textarea {
 }
 
 #amountExchange, #amount {
-    width: 130px;
+    width: 140px;
     position: relative;
 }
 
@@ -1272,7 +1270,7 @@ input[type='text']:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 
 .sendform input {
-    width: 300px;
+    width: 320px;
     box-sizing: border-box;
 }
 
@@ -1444,6 +1442,7 @@ label {
     border-width: 6px 6px 0 6px;
     border-style: solid;
     border-color: #686868 transparent;
+    box-sizing: border-box;
 }
 
 .selectdiv .dropdown {

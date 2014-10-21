@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
-    <!--<script src="scripts/script.js"></script>-->
-    <script src="/scripts/ejs_production.js"></script>
+    <!--<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script> для включения jQuery-->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="scripts/script.js"></script>
+
+
 
     <title>Coincosm</title>
 </head>
@@ -26,6 +28,30 @@
 <script src="js/all.js"></script>
 <script>
     var Bitcoin = require('./lib/bitcoinjs/index.js');
+</script>
+
+<script>
+    /*        $(function($)
+     {
+     $('ul.form > li > a').click(
+     function(e) {
+     e.preventDefault(); // prevent the default action
+     e.stopPropagation(); // stop the click from bubbling
+     $(this).parent().addClass('selected');
+     });
+     });*/
+    $('ul.form > li > a').click(
+            function(e) {
+                e.preventDefault(); // prevent the default action
+                e.stopPropagation(); // stop the click from bubbling
+                $(this).parent().addClass('selected');
+            });
+    /*$(function($){
+     // Get current url
+     // Select an a element that has the matching href and apply a class of 'active'. Also prepend a - to the content of the link
+     var url = window.location.href;
+     $('.form a[href="'+url+'"]').parent().addClass('selected');
+     });*/
 </script>
 </body>
 </html>

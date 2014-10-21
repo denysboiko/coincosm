@@ -17,7 +17,7 @@ coinpunk.controllers.Tx.prototype.send = function() {
   var self = this;
 
   this.getUnspent(function(resp) {
-    coinpunk.router.render('view', 'tx/send', {balance: coinpunk.wallet.safeUnspentBalance()}, function(id) {
+    coinpunk.router.render('workspace', 'tx/send', {balance: coinpunk.wallet.safeUnspentBalance()}, function(id) {
       self.updateExchangeRates(id, false);
       $('#'+id+" [rel='tooltip']").tooltip();
     });

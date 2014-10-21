@@ -79,10 +79,10 @@ coinpunk.Controller.prototype.deleteWallet = function(serverKey, callback) {
   });
 };
 
-coinpunk.Controller.prototype.render = function(path, data, callback) {
-  this.template('header', 'header');
-  this.template('sidebar', 'sidebar');
-  this.template('view', path, data, callback);
+coinpunk.Controller.prototype.render = function(path, data, callback, id) {
+      this.template('header', 'header');
+      this.template('view', path, data, callback);
+      this.template('sidebar', 'sidebar'); // ХУЙНЯ
 };
 
 coinpunk.Controller.prototype.template = function(id, path, data, callback) {
@@ -96,7 +96,8 @@ coinpunk.Controller.prototype.friendlyTimeString = function(timestamp) {
 
 coinpunk.Controller.prototype.updateExchangeRates = function(id) {
   coinpunk.pricing.getLatest(function(price, currency) {
-    $('#balanceExchange').text(' ≈ '+ parseFloat(price * $('#balance').text()).toFixed(2) + ' ' + currency);
+    //$('#balanceExchange').text(' ≈ '+ parseFloat(price * $('#balance').text()).toFixed(2) + ' ' + currency);
+    $('#balanceExchange').text(parseFloat(price * $('#balance').text()).toFixed(2));
     $('#exchangePrice').text('1 BTC ≈ ' + price + ' ' + currency);
 
     $('#'+id+' .exchangePrice').remove();

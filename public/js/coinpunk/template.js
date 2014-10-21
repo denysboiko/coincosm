@@ -15,7 +15,8 @@ coinpunk.Template = {
     'signin',
     'signup',
     'main',
-    'buy'
+    'buy',
+    'footer'
   ],
  
   templateCache: {},
@@ -23,7 +24,7 @@ coinpunk.Template = {
   get: function(path, callback) {
     var self = this;
 
-    $.get('views/'+path+'.html', function(res) {
+    $.get('templates/'+path+'.html', function(res) {
       self.templateCache[path] = res;
       if(callback)
         callback(res);

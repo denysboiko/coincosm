@@ -1,17 +1,7 @@
-<div id="container" class="container">
-    <div id="sidebar" class="sidebar">
-    </div>
-		<div class="workspace">
 			<span class="title">Request Bitcoins<a class="eyesight" href="javascript:hideshow(document.getElementById('adiv'))"><img src="images/eye.svg"/></a></span><div id="adiv" class="topusertext">A&nbsp;Bitcoin address, or&nbsp;simply address, is&nbsp;an&nbsp;identifier of&nbsp;27-34 alphanumeric characters, beginning with the number 1&nbsp;or 3, that represents a&nbsp;possible destination for a&nbsp;Bitcoin payment. Addresses can be&nbsp;generated at&nbsp;no&nbsp;cost by&nbsp;any user of&nbsp;Bitcoin. For example, using Bitcoin-Qt, one can click &laquo;New Address&raquo; and be&nbsp;assigned an&nbsp;address. It&nbsp;is&nbsp;also possible to&nbsp;get a&nbsp;Bitcoin address using an&nbsp;account at&nbsp;an&nbsp;exchange or&nbsp;online wallet service.</div>
 				<div>
 					<div class="sendform">
 						<label>Your adress</label>
-						<!--<select>
-							<option>1Du5y5Qv1oWVZtfXRzR4Cktkm6VSgfiW2T</option>
-							<option>1Du5y5Qv1oWVZtfXRzR4Cktkm6VSgfiW2T</option>
-							<option>New adress</option>
-						</select><br>-->
-						
 							<div id="dd" class="selectdiv">1Du5y5Qv1oWVZtfXRzR4Cktkm6VSgfiW2T
 								<ul class="dropdown">
 									<li><a href="#">1Du5y5Qv1oWVZtfXRzR4Cktkm6VSgfiW2T</a></li>
@@ -21,7 +11,7 @@
 						
 						</div>
 						<label for="themefield">Theme </label><input type="text" id="themefield" placeholder="Label here"><br>
-						<label for="amount">Amount </label><div class="amountwrapper"><input type="text" id="amount" placeholder="0.0000"><i class="fa fa-btc" id="btcicon"></i><div class="equalsign">=</div><input type="text" id="amountusd" placeholder="0.00""><i class="fa fa-usd" id="usdicon"></i></div>
+						<label for="amount">Amount </label><div class="amountwrapper"><input type="text" id="amount" placeholder="0.0000"><i class="fa fa-btc" id="btcicon"></i><div class="equalsign">=</div><input type="text" id="amountExchange" placeholder="0.00"><i class="fa fa-usd" id="usdicon"></i></div>
 						<div class="sendprintbutt">
 							<a href="#" class="sendbutt buttonsstyle"><i class="fa fa-print"></i> Print request</a><br>
 						</div>
@@ -37,5 +27,35 @@
 						</div>
 					</div>
 				</div>
-		</div>
-</div>
+            <script type="text/javascript" src="scripts/jquery-1.8.3.min.js"></script>
+            <script type="text/javascript">
+
+                function DropDown(el) {
+                    this.dd = el;
+                    this.initEvents();
+                }
+
+                DropDown.prototype = {
+                    initEvents : function() {
+                        var obj = this;
+                        obj.dd.on('click', function(event){
+                            $(this).toggleClass('active');
+                            event.preventDefault();
+                            event.stopPropagation();
+                        });
+                    }
+                }
+
+                $(function() {
+                    var dd = new DropDown($('#dd'));
+                    $(document).click(function() {
+                        $('#dd').removeClass('active');
+                    });
+                });
+                /*$(function() {
+                    $('#dd > li > a').click(function() {
+                        $('#dd').text(this.text);
+                    });
+                });*/
+
+            </script>

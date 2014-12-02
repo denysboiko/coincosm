@@ -890,12 +890,13 @@ body {
     /*box-shadow: 0 0 10px #E1E1E1;*/
 }
 
-a.userid::after {
+span.userid::after {
     position: absolute;
     content: '';
     border: 5px solid transparent;
     border-top: 5px solid #008BE8;
     cursor: pointer;
+    cursor: hand;
     margin-top: -2px;
     top: 50%;
     margin-left: 5px;
@@ -913,9 +914,11 @@ div.userid {
     margin-left: 10px;
 }
 
-a.userid {
+span.userid {
     text-decoration: none;
     color: rgb(0, 139, 232);
+    cursor: pointer;
+    cursor: hand;
 }
 
 .usermenu {
@@ -1214,9 +1217,38 @@ button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
     margin: 15px auto;
-    display: block;
+    display: inline-block;
     font-size: 14px;
     text-decoration: none;
+    text-transform: none;
+    overflow: visible;
+}
+button:active,
+button.active {
+    background-image: none;
+    outline: 0;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
 input[type='text'], input[type="password"], input[type="email"], textarea {

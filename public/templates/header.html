@@ -4,7 +4,7 @@
         <div class="topms">
             <% if(coinpunk.wallet) { %>
             <div class="userid" id="ud">
-                <span class="userid"><%- coinpunk.wallet.walletId %></span>
+                <a href="#" class="userid"><%- coinpunk.wallet.walletId %></a>
                 <div class="usermenu">
                     <ul>
                         <li><a href="#/account/settings"><i class="fa fa-gear"></i> Account settings</a></li>
@@ -43,7 +43,7 @@
 
     $(function() {
         var ud = new DropDown($('#ud'));
-        $(document).on('click', function() {
+        $(document).click(function() {
             $('#ud').removeClass('active');
         });
     });

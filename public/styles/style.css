@@ -7,7 +7,7 @@ Project URI: http://coincosm.com
 
 @charset "UTF-8";
 
-@import url('../fonts/font-awesome/css/font-awesome.min.css');
+@import url('../fonts/font-awesome-4.2.0/css/font-awesome.min.css');
 
 @import url(http://fonts.googleapis.com/css?family=Lato:400,300,100);
 
@@ -661,7 +661,8 @@ a.sendbtc {
 }
 
 a.sendbtc:hover {
-    background: #cccccc;
+    background: #999999;
+    color: #fff
 }
 
 .checkbox, .radio {
@@ -869,6 +870,10 @@ input[type=checkbox] {
 
 ::-webkit-input-placeholder {
     color: #46485c;
+}
+input[type="text"], input[type="password"] {
+    -webkit-appearance: none;
+    -webkit-border-radius:0;
 }
 
 .signinlayer [placeholder]:focus::-webkit-input-placeholder {

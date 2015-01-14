@@ -2,11 +2,16 @@
 				<div>
 					<div class="sendform">
 						<label>Your adress</label>
-							<div id="dd" class="selectdiv">1Du5y5Qv1oWVZtfXRzR4Cktkm6VSgfiW2T
+							<div id="dd" class="selectdiv"><span><%- data.addresses[0].address %></span>
 								<ul class="dropdown">
-									<li><a href="#">1Du5y5Qv1oWVZtfXRzR4Cktkm6VSgfiW2T</a></li>
-									<li><a href="#">18VyP5qUuhsa3NqrU2VkjkY3Bi6AYLXHH7</a></li>
-									<li><a href="#">New adress</a></li>
+
+                                    <% for(var i=0; i < data.addresses.length; i++) { %>
+                                    <% if(!data.addresses[i].isChange) { %>
+
+									<li><a href="#"><%- data.addresses[i].address %></a></li>
+                                    <% } %>
+                                    <% } %>
+									<li><a href="#">Generate New</a></li>
 								</ul>
 						
 						</div>
@@ -39,7 +44,7 @@
                         var obj = this;
                         obj.dd.on('click', function(event){
                             $(this).toggleClass('active');
-                            //event.preventDefault();
+                            event.preventDefault();
                             event.stopPropagation();
                         });
                     }
@@ -51,9 +56,11 @@
                         $('#dd').removeClass('active');
                     });
                 });
+
                 $(function() {
-                    $('#dd > li > a').on('click',function() {
-                        $('#dd').text=this.text;
+                    $('#dd a').on('click', function() {
+                        console.log(this.text)
+                        $('#dd > span').text(this.text);
                     });
                 });
 

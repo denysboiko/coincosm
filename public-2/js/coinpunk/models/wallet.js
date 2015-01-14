@@ -62,13 +62,6 @@ coinpunk.Wallet = function(walletKey, walletId) {
     keyPairs.push(newKeyPair);
     return newKeyPair.address;
   };
-  
-  this.removeAddress = function(address) {
-    var i=0;
-    for(i=0;i<keyPairs.length;i++)
-      if(keyPairs[i].address == address)
-        keyPairs.splice(i, 1)
-  };
 
   this.getAddressName = function(address) {
     for(var i=0;i<keyPairs.length;i++)
@@ -356,17 +349,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
     for(var i=0;i<tx.unspentsUsed.length;i++)
       this.unspent = _.reject(this.unspentsUsed, function(u) { return u.hash == tx.unspentsUsed[i].hash })
 
-    this.lastUnspentsUsed = tx.unspentsUsed;
-
     return tx.raw;
-  };
-
-  this.revertTx = function() {
-    var i=0;
-    this.transactions.pop();
-    for(i=0;i<this.lastUnspentsUsed.length;i++)
-      this.unspent.push(this.lastUnspentsUsed[i])
-    // keyPairs.pop(); might be unsafe, not doing for now
   };
 
   if(walletKey && walletId)

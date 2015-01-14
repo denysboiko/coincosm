@@ -155,6 +155,11 @@ coinpunk.router.map('#/addresses/list').to(function () {
     });
 });
 
+coinpunk.router.map("#/request").to(function () {
+    coinpunk.router.render("workspace", "request", {addresses: coinpunk.wallet.receiveAddresses()});
+});
+
+
 coinpunk.router.map('#/addresses/request/:address').to(function () {
     var address = this.params['address'];
     coinpunk.router.initWallet(function (res) {
@@ -194,9 +199,6 @@ coinpunk.router.map("#/contacts").to(function () {
     coinpunk.router.render("workspace", "contacts");
 });
 
-coinpunk.router.map("#/request").to(function () {
-    coinpunk.router.render("workspace", "request");
-});
 
 coinpunk.router.root("#/");
 coinpunk.router.listen();

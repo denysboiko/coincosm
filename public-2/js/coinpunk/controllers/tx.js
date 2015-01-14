@@ -121,24 +121,11 @@ coinpunk.controllers.Tx.prototype.create = function() {
     if(response.result == 'error' && response.messages[0] == 'Invalid session key') {
       self.displayErrors(['Fatal error: invalid session key, tx was not sent, logging out'], errorsDiv);
       delete coinpunk.wallet;
-    } else if(response.result != 'ok') {
+    } else if(response.result == 'error') {
       self.displayErrors(['An unknown error has occured, tx was not sent. Logging out. Please try again later.'], errorsDiv);
       delete coinpunk.wallet;
     } else {
       $.post('/api/tx/send', {tx: rawtx}, function(resp) {
-        if(resp.error) {
-          coinpunk.wallet.revertTx();
-
-          return self.saveWallet({override: true}, function(walletResponse) {
-            if(response.result != 'ok') {
-              self.displayErrors(['An unknown error has occured, tx was not sent and could not revert tx info. Logging out. Please reload and try again later.'], errorsDiv);
-              delete coinpunk.wallet;
-            }
-            self.displayErrors([resp.error.message], errorsDiv);
-            sendButton.removeClass('disabled');
-          })
-        }
-
         coinpunk.database.setSuccessMessage("Sent "+amount+" BTC to "+address+".");
 
         self.getUnspent(function() {
@@ -201,15 +188,7 @@ coinpunk.controllers.Tx.prototype.scanQR = function(event) {
     if(result === 'error decoding QR Code')
       return errorsDiv.removeClass('hidden').text('Could not process the QR code, the image may be blurry. Please try again.');
 
-      console.log(result)
-
     var uri = new URI(result);
-
-    if(uri.protocol() == '') {
-      $('#address').val(uri.toString());
-      coinpunk.controllers.tx.calculateFee()
-      return;
-    }
 
     if(uri.protocol() != 'bitcoin')
       return errorsDiv.removeClass('hidden').text('Not a valid Bitcoin QR code.');
@@ -222,11 +201,8 @@ coinpunk.controllers.Tx.prototype.scanQR = function(event) {
     
     var queryHash = uri.search(true);
     
-    if(queryHash.amount) {
+    if(queryHash.amount)
       $('#amount').val(queryHash.amount);
-      coinpunk.controllers.tx.sendExchangeUpdate();
-      coinpunk.controllers.tx.calculateFee();
-    }
   }
 
   var canvas = document.createElement('canvas');

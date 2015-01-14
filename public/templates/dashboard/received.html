@@ -1,68 +1,37 @@
-<!--<h2>Received</h2>-->
-
 <% if(data.tx.length == 0) {%>
-
-  <p>No transactions yet.</p>
-
+    <p>No transactions yet.</p>
 <% } else { %>
-
-<!--
-    <% for(var i=0; i<data.tx.length; i++) { %>
-
-      <div class="row" onclick="window.open('#/tx/details/<%- data.tx[i].hash %>','_self')">
-        <div class="col-md-6">
-          <strong><%- humaneDate(new Date(data.tx[i].time).toISOString()) %></strong>
-          <span class="receivedExchangePrice addExchangePrice pull-right" style="color: #33CC33; margin-right: 10px; font-size: 12px; font-weight: bold"><%- data.tx[i].amount %> BTC</span>
-        </div>
-      </div>
-
-      <div class="row" onclick="window.open('#/tx/details/<%- data.tx[i].hash %>','_self')">
-        <div class="col-md-6">
-          <div style="font-size: 10pt">
-            <strong><%- coinpunk.wallet.getAddressName(data.tx[i].address) || data.tx[i].address %></strong>
-          </div>
-          <div><%- data.tx[i].confirmations %> confirmations</div>
-        </div>
-      </div>
-
-<% } %>
-
-
-  <!--  <table class="table table-bordered table-striped table-hover">
-      <thead>
+    <table class="transactionbook" cellpadding="" cellspacing="">
+        <thead>
         <tr>
-          <th>Address</th>
-          <th>Amount</th>
-        <th>Discovered</th>
-        <th>Confirmations</th>
-        <th></th>
-      </thead>-->
-
-        <table class="transactionbook" cellpadding="" cellspacing="">
-            <thead>
-            <tr>
-                <th class="firstcolumn">Transaction</th>
-                <th>Amount</th>
-                <th>Date</th>
-            </tr>
-            </thead>
-           <tbody>
-
- <% for(var i=0; i<data.tx.length; i++) { %>
-          <tr>
-            <td class="firstcolumn" style="width: 540px;"><h5><i class="fa fa-arrow-right"></i> <%- coinpunk.wallet.getAddressName(data.tx[i].address) || data.tx[i].address %></h5>
-                    <% if(data.tx[i].confirmations == 0) { %>
-                       <i class="fa fa-times-circle"></i>
-                    <% } else if(data.tx[i].confirmations < coinpunk.controllers.dashboard.minimumStrongSendConfirmations) { %>
-                       <i class="fa fa-clock-o"></i>
-                    <% } else { %>
-                       <i class="fa fa-check-circle"></i>
-                    <% } %>
-                <a href="#/tx/details/<%- data.tx[i].hash %>" class="chlink"><%- data.tx[i].hash %><!--a2a4ce74d5b7e8de14ede22da0bebd0a1ebb0390aa9bd7cef7dceb63b9b407cb--></a>
+            <th class="firstcolumn">Transaction</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(var i=0; i < data.tx.length; i++) { %>
+        <tr>
+            <td class="firstcolumn" style="width: 540px;"><h5>
+                <i class="fa fa-arrow-right"></i><%- data.tx[i].type %>
+                <%- coinpunk.wallet.getAddressName(data.tx[i].address) || data.tx[i].address %></h5>
+                <% if(data.tx[i].confirmations == 0) { %>
+                    <i class="fa fa-times-circle"></i>
+                <% } else if(data.tx[i].confirmations < coinpunk.controllers.dashboard.minimumStrongSendConfirmations) { %>
+                    <i class="fa fa-clock-o"></i>
+                <% } else { %>
+                    <i class="fa fa-check-circle"></i>
+                <% } %>
+                <a href="#/tx/details/<%- data.tx[i].hash %>" class="chlink"><%- data.tx[i].hash %></a>
 
             </td>
             <td style="color: rgb(104, 104, 104);"><%- data.tx[i].amount %> <i class="fa fa-btc"></i></td>
-            <td><time datetime="<%- new Date(data.tx[i].time).toISOString() %>"><%- humaneDate(new Date(data.tx[i].time).toISOString()) %></time></td>
+            <td>
+                <time datetime="<%- new Date(data.tx[i].time).toISOString() %>">
+                    <%- humaneDate(new Date(data.tx[i].time).toISOString()) %>
+                </time>
+            </td>
+
             <!--<span class="addExchangePrice"> BTC</span>-->
             <!--<td>
               <%- data.tx[i].confirmations %>
@@ -75,8 +44,8 @@
                 <span class="label label-success pull-right" rel="tooltip" data-toggle="tooltip" title="Transaction has at least 6 confirmations. This is the standard most Bitcoin services use for confirming large transfers.">Strongly Confirmed</span>
               <% } %>
             </td>-->
-        <% } %>
+            <% } %>
         </tr>
-      </tbody>
+        </tbody>
     </table>
 <% } %>

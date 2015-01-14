@@ -895,18 +895,6 @@ body {
     /*box-shadow: 0 0 10px #E1E1E1;*/
 }
 
-span.userid::after {
-    position: absolute;
-    content: '';
-    border: 5px solid transparent;
-    border-top: 5px solid #008BE8;
-    cursor: pointer;
-    cursor: hand;
-    margin-top: -2px;
-    top: 50%;
-    margin-left: 5px;
-}
-
 div.userid {
     padding: 8px 5px;
     position: relative;
@@ -919,11 +907,23 @@ div.userid {
     margin-left: 10px;
 }
 
-span.userid {
+a.userid {
     text-decoration: none;
     color: rgb(0, 139, 232);
     cursor: pointer;
     cursor: hand;
+}
+
+a.userid::after {
+    position: absolute;
+    content: '';
+    border: 5px solid transparent;
+    border-top: 5px solid #008BE8;
+    cursor: pointer;
+    cursor: hand;
+    margin-top: -2px;
+    top: 50%;
+    margin-left: 5px;
 }
 
 .usermenu {

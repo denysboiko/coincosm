@@ -3,7 +3,7 @@
 <div id="errors" class="alert alert-error hidden">
 
 </div>
-<form class="authform" action="#" name="sf" onsubmit="coinpunk.controllers.accounts.signin(); return false;" autocapitalize="off">
+<form id="signinform" class="authform" action="#" name="sf" onsubmit="coinpunk.controllers.accounts.signin(); return false;" autocapitalize="off">
     <label for="walletId">Email</label>
     <input type="text" id="walletId" autocorrect="off" autocapitalize="off" placeholder="Your email">
     <div class="form-group" id="signinPassword">
@@ -23,8 +23,8 @@
     </label>-->
 
 
-    <a href="#" onclick="javascript:document.sf.submit()" class="buttonstyle" role="submit">Sign In</a>
-    <button type="submit" class="buttonstyle"><i class="fa fa-sign-in"></i> Sign In</button>
+    <a id="sninbtn" href="#" onclick="javascript:document.sf.submit()" class="buttonsstyle" role="submit"><i class="fa fa-sign-in"></i> Sign In</a>
+    <!--<button type="submit" class="buttonstyle"><i class="fa fa-sign-in"></i> Sign In</button>-->
 
     <!--
     <p>New User?</p>
@@ -32,4 +32,18 @@
     <a href="#/accounts/import">Import</a>
     -->
 </form>
+<!--    <script>
+        $(function() {
+            $('#sninbtn').on('click', function() {
+                $("#signinform").submit();
+            });
+        });
+    </script>-->
+    <script>
+        $(function() {
+            $('a[role="submit"]').on('click', function() {
+                $(this).parent('form').submit();
+            });
+        });
+    </script> <!--Так можно сабмитить форму ссылкой-->
 </div>

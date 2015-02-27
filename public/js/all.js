@@ -3819,7 +3819,6 @@ var PasswordStrength = function () {
     }
 };
 PasswordStrength.test = function (a, b) {
-    var strength = Null;
     return strength = new PasswordStrength, strength.username = a, strength.password = b, strength.test(), strength
 }, function (a) {
     a.strength = function (b, c, d, e) {
@@ -5564,7 +5563,9 @@ var SockJS = function () {
         return"input" === b && "image" !== a.type ? void 0 : e.domAttributes[b]
     }, e.encode = m, e.decode = decodeURIComponent, e.iso8859 = function () {
         e.encode = escape, e.decode = unescape
-    }, e.unicode = function () {e.encode = m, e.decode = decodeURIComponent}, e.characters = {pathname: {encode: {expression: /%(24|26|2B|2C|3B|3D|3A|40)/gi, map: {"%24": "$", "%26": "&", "%2B": "+", "%2C": ",", "%3B": ";", "%3D": "=", "%3A": ":", "%40": "@"}}, decode: {expression: /[\/\?#]/g, map: {"/": "%2F", "?": "%3F", "#": "%23"}}}, reserved: {encode: {expression: /%(21|23|24|26|27|28|29|2A|2B|2C|2F|3A|3B|3D|3F|40|5B|5D)/gi, map: {"%3A": ":", "%2F": "/", "%3F": "?", "%23": "#", "%5B": "[", "%5D": "]", "%40": "@", "%21": "!", "%24": "$", "%26": "&", "%27": "'", "%28": "(", "%29": ")", "%2A": "*", "%2B": "+", "%2C": ",", "%3B": ";", "%3D": "="}}}}, e.encodeQuery = function (a, b) {
+    }, e.unicode = function () {
+        e.encode = m, e.decode = decodeURIComponent
+    }, e.characters = {pathname: {encode: {expression: /%(24|26|2B|2C|3B|3D|3A|40)/gi, map: {"%24": "$", "%26": "&", "%2B": "+", "%2C": ",", "%3B": ";", "%3D": "=", "%3A": ":", "%40": "@"}}, decode: {expression: /[\/\?#]/g, map: {"/": "%2F", "?": "%3F", "#": "%23"}}}, reserved: {encode: {expression: /%(21|23|24|26|27|28|29|2A|2B|2C|2F|3A|3B|3D|3F|40|5B|5D)/gi, map: {"%3A": ":", "%2F": "/", "%3F": "?", "%23": "#", "%5B": "[", "%5D": "]", "%40": "@", "%21": "!", "%24": "$", "%26": "&", "%27": "'", "%28": "(", "%29": ")", "%2A": "*", "%2B": "+", "%2C": ",", "%3B": ";", "%3D": "="}}}}, e.encodeQuery = function (a, b) {
         var c = e.encode(a + "");
         return b ? c.replace(/%20/g, "+") : c
     }, e.decodeQuery = function (a, b) {

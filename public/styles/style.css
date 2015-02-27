@@ -89,10 +89,6 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-body {
-    line-height: 1;
-}
-
 ol, ul {
     list-style: none;
 }
@@ -115,12 +111,24 @@ table {
 /*Main Style*/
 
 body {
-    font-family: "Open Sans";
-
+    /*width: auto;*/
+    background: #f6f6f6;
+    text-rendering: optimizelegibility;
+    font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    /*overflow: hidden*/
 }
 
+.footer, .header {
+    background: #fafafa;
+    border-bottom: 2px solid #f0f0f0;
+    /*box-shadow: 0 0 10px #E1E1E1;*/
+}
+
+
 .header {
-    width: 100%;
+    /*width: 100%;*/
     margin: 0 auto;
     text-transform: uppercase;
     font-size: 12px;
@@ -155,13 +163,19 @@ body {
     width: 75%;
 }
 
+#menu {
+    float: right
+}
+
+#menu li {
+    display: inline-block;
+}
+
 #menu a {
     text-decoration: none;
     color: rgb(153, 153, 153);
     padding: 8px 5px 8px 5px;
     margin: 0 10px;
-    display: inline-block;
-    float: right;
 }
 
 #menu a:hover {
@@ -596,7 +610,7 @@ a.lm:hover {
 }
 
 .buttonsstyle {
-    color: white;
+    color: #fff;
     font-family: 'Open Sans';
     text-decoration: none;
     user-select: none;
@@ -611,9 +625,15 @@ a.lm:hover {
     padding: 11px 20px;
 }
 
-.buttonsstyle:hover {
+.buttonsstyle:hover, .buttonsstyle:focus {
     background: #1fe0a0;
+    color: #fff;
+    text-decoration: none;
 }
+.buttonsstyle:focus {
+    outline: none;
+}
+
 
 .buttonsstyle:active {
     position: relative;
@@ -628,7 +648,7 @@ a.impbutt {
 
 a.expbutt {
     display: inline-block;
-    width: 120px;
+    width: 160px;
     margin: 0 5px;
 }
 
@@ -883,19 +903,6 @@ input[type="text"], input[type="password"] {
     opacity: 0;
 }
 
-body {
-    background: #f6f6f6;
-    text-rendering: optimizelegibility;
-    font-family: 'Open Sans';
-    font-size: 14px;
-}
-
-.footer, .header {
-    background: #fafafa;
-    border-bottom: 2px solid #f0f0f0;
-    /*box-shadow: 0 0 10px #E1E1E1;*/
-}
-
 div.userid {
     padding: 8px 5px;
     position: relative;
@@ -994,13 +1001,16 @@ a.userid::after {
 .sidebar {
     float: left;
     display: block;
-    width: 25%;
+    padding: 0;
+}
+
+.sidebar .menu {
+    width: 200px;
 }
 
 .balance {
     padding: 25px 20px 15px;
     background: #efefef;
-    width: 160px;
     position: relative;
     border: 2px solid #f0f0f0;
     border-bottom: 0;
@@ -1041,7 +1051,7 @@ ul.form {
     position: relative;
     background: #fafafa;
     display: block;
-    width: 200px;
+    width: 100%;
     margin: auto;
     padding: 0;
     list-style: none;
@@ -1050,7 +1060,6 @@ ul.form {
 }
 
 .form li a {
-    width: 180px;
     padding-left: 20px;
     height: 40px;
     line-height: 40px;
@@ -1085,12 +1094,11 @@ ul.form {
 }
 
 .workspace {
-    display: inline-block;
-    width: 75%;
     position: relative;
-    margin-left: 0px;
+    margin-left: 0;
     margin-bottom: 130px;
     min-height: 630px;
+    padding: 0
 }
 
 .topusertext {
@@ -1465,7 +1473,7 @@ label {
 .selectdiv {
     /* Size and position */
     position: relative; /* Enable absolute positionning for children and pseudo elements */
-    width: 300px;
+    width: 320px;
     padding: 10px;
     display: inline-block;
     margin: 0 auto 20px 0px;

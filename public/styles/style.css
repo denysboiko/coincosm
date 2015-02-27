@@ -205,7 +205,7 @@ body {
     position: relative;
     background-repeat: no-repeat;
     color: white;
-    background: url(/images/7.jpg) 0px 0px no-repeat;
+    background: url(../images/7.jpg) 0px 0px no-repeat;
     background-size: auto auto;
 }
 
@@ -870,6 +870,7 @@ input[type=checkbox] {
 
 ::-webkit-input-placeholder {
     color: #46485c;
+    font-family: 'Open Sans';
 }
 input[type="text"], input[type="password"] {
     -webkit-appearance: none;
@@ -1117,8 +1118,7 @@ ul.form {
 }
 
 .adressbook img:hover {
-    width: 55px;
-    height: 55px;
+    /*border:  3px solid #fefefe;*/
 }
 
 .adressbook, .contactsbook, .transactionbook {
@@ -1270,6 +1270,14 @@ input[type='text'], input[type="password"], input[type="email"], textarea {
     -ms-transition: all .2s ease;
     -o-transition: all .2s ease;
     transition: all .2s ease;
+}
+
+textarea {
+    width: 320px;
+    font-family: 'Open Sans';
+    box-sizing: border-box;
+    vertical-align: baseline;
+    resize: none;
 }
 
 .amountwrapper {

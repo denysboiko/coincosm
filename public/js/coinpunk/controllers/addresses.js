@@ -86,6 +86,6 @@ coinpunk.controllers.Addresses.prototype.drawRequestQR = function(address) {
 
   $('#qrcode').html('');
   new QRCode(document.getElementById('qrcode'), uri.toString().replace('://', ':'));
-}
+};
 
 coinpunk.controllers.addresses = new coinpunk.controllers.Addresses();

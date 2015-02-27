@@ -24,7 +24,7 @@ coinpunk.router.listener = function () {
         if (sock) {
             sock.close();
         }
-    }
+    };
 
     sock.onopen = function () {
         coinpunk.router.listenerTimeout = setInterval(function () {

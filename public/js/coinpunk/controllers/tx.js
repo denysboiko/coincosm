@@ -262,7 +262,7 @@ coinpunk.controllers.Tx.prototype.scanQR = function(event) {
     }
 
     qrcode.decode(canvas.toDataURL('image/png'));
-  }
+  };
 
   img.src = URL.createObjectURL(event.target.files[0]);
 };

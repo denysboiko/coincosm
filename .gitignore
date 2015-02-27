@@ -5,3 +5,4 @@ coinpunk.csr
 coinpunk.crt
 *.swp
 .idea
+config.json

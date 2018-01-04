@@ -9,11 +9,21 @@
         possible to&nbsp;get a&nbsp;Bitcoin address using an&nbsp;account at&nbsp;an&nbsp;exchange or&nbsp;online wallet
         service.
     </div>
-    <div class="buttcontainer"><input id="addressLabel" type="text"><a href="#"
-                                                                       onClick="coinpunk.controllers.addresses.generateNewAddress($('#addressLabel').val()); return false;"
-                                                                       class="mainbutton buttonsstyle"><i
-            class="fa fa-plus"></i> Add address</a></div>
 
+    <div class="buttcontainer">
+        <input id="addressLabel" type="text"/>
+        <a href="#" onClick="coinpunk.controllers.addresses.generateNewAddress($('#addressLabel').val()); return false;" class="mainbutton buttonsstyle">
+            <i class="fa fa-plus"></i> Generate address
+        </a>
+        <div id="newAddressDialog" class="alert alert-success alert-dismissable hidden">
+            <button type="btn" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <span id="newAddressMessage"></span>
+        </div>
+    </div>
+<!--    <form onsubmit="coinpunk.controllers.addresses.generateNewAddress($('#addressLabel').val()); return false;">
+        <button class="btn btn-primary"><i class="fa fa-plus"></i> Generate</button>
+
+    </form>-->
 
     <div id="addresses">
 
@@ -86,10 +96,3 @@
         </table>
         <% } %>
     </div>
-    <form onsubmit="coinpunk.controllers.addresses.generateNewAddress($('#addressLabel').val()); return false;">
-        <button class="btn btn-primary"><i class="fa fa-plus"></i> Generate</button>
-        <div id="newAddressDialog" class="alert alert-success alert-dismissable hidden">
-            <button type="btn" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <span id="newAddressMessage"></span>
-        </div>
-    </form>

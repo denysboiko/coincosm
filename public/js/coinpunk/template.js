@@ -1,4 +1,5 @@
 coinpunk.Template = {
+
   preCache: [
     'accounts/import',
     'accounts/settings',

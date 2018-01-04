@@ -120,6 +120,10 @@ body {
     /*overflow: hidden*/
 }
 
+a:focus {
+    outline: none
+}
+
 .footer, .header {
     background: #fafafa;
     border-bottom: 2px solid #f0f0f0;
@@ -136,15 +140,11 @@ body {
     letter-spacing: .1em;
 }
 
-.header .container {
-    display: table;
-    height: 90px;
-
-}
-
 .logo {
     display: block;
     text-align: center;
+    float: left;
+    width: 25%
 }
 
 .logo img {
@@ -156,12 +156,20 @@ body {
     float: right;
 }
 
+.header .container {
+
+
+}
+
 .topms {
     position: relative;
-    display: table-cell;
     vertical-align: middle;
     width: 75%;
+    float: left;
+    padding: 30px 0;
 }
+
+.topms
 
 #menu {
     float: right
@@ -174,8 +182,13 @@ body {
 #menu a {
     text-decoration: none;
     color: rgb(153, 153, 153);
-    padding: 8px 5px 8px 5px;
-    margin: 0 10px;
+    padding: 0 10px;
+    line-height: 30px;
+    display: block;
+}
+
+#menu li + li {
+    margin-left: 10px;
 }
 
 #menu a:hover {
@@ -911,7 +924,6 @@ div.userid {
     text-transform: none;
     letter-spacing: 0;
     font-size: 14px;
-    margin-top: -2px;
     margin-left: 10px;
 }
 
@@ -1080,9 +1092,9 @@ ul.form {
     color: #33CC99;
 }
 
-.form li.selected a {
+.form li a.selected {
     background: #efefef;
-    color: #33CC99;
+    /*color: #33CC99;*/
 }
 
 .form i {
@@ -1221,7 +1233,7 @@ h6 {
     display: inline;
 }
 
-button {
+button.buttonsstyle {
     background: none repeat scroll 0% 0% #3C9;
     border: 0px none;
     width: 140px;
@@ -1400,6 +1412,7 @@ label {
     display: block;
     position: relative;
     transition: all 0.5s ease 0s;
+    border: 5px solid #fff;
 }
 
 .requestqr img:hover {

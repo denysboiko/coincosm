@@ -66,11 +66,16 @@
 
     <p>A fee of <span id="fee"><%- coinpunk.controllers.tx.defaultFee %></span> will be added.</p>
 
-    <button id="sendButton" type="submit"><i class="fa fa-arrow-right"></i> Send Bitcoins</button>
+    <!--<button id="sendButton" type="submit"><i class="fa fa-arrow-right"></i> Send Bitcoins</button>-->
 
 </form>
 
 
 <script>
     $("#qrcodeinput").on("change", coinpunk.controllers.tx.scanQR);
+
+    $(".sendbutt").on("click", function (e) {
+        e.preventDefault();
+        $("#createSendForm").submit();
+    });
 </script>

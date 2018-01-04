@@ -55,21 +55,15 @@
 </script>
 
 <script>
-    /*        $(function($)
-     {
-     $('ul.form > li > a').click(
-     function(e) {
-     e.preventDefault(); // prevent the default action
-     e.stopPropagation(); // stop the click from bubbling
-     $(this).parent().addClass('selected');
-     });
-     });*/
-    $('ul.form > li > a').click(
-            function(e) {
-                e.preventDefault(); // prevent the default action
-                e.stopPropagation(); // stop the click from bubbling
-                $(this).parent().addClass('selected');
-            });
+    (function() {
+        $('ul.form > li > a').click(
+                function(e) {
+                    e.preventDefault(); // prevent the default action
+                    e.stopPropagation(); // stop the click from bubbling
+                    $(this).addClass('selected');
+                });
+    })();
+
     /*$(function($){
      // Get current url
      // Select an a element that has the matching href and apply a class of 'active'. Also prepend a - to the content of the link

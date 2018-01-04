@@ -3,10 +3,10 @@ coinpunk.controllers.Addresses.prototype = new coinpunk.Controller();
 
 coinpunk.controllers.Addresses.prototype.list = function() {
   var self = this;
-  this.template('workspace','addresses/list', {addresses: coinpunk.wallet.receiveAddresses()}, function(id) {
-    self.updateExchangeRates(id);
-  }); // ХУЙНЯ (нужно переписать coinpunk.Controller.prototype.template, иначе нахуй оно вообще нужен)
-}
+  this.template('workspace', 'addresses/list', {addresses: coinpunk.wallet.receiveAddresses()}/*, function(id) {
+    //self.updateExchangeRates(id);
+  }*/); // ХУЙНЯ (нужно переписать coinpunk.Controller.prototype.template, иначе нахуй оно вообще нужен)
+};
 
 coinpunk.controllers.Addresses.prototype.generateNewAddress = function(label) {
   var self = this;
@@ -35,19 +35,17 @@ coinpunk.controllers.Addresses.prototype.generateNewAddress = function(label) {
 
 coinpunk.controllers.Addresses.prototype.request = function(address) {
   var self = this;
-  this.render('addresses/request', {address: address}, function(id) {
+  this.template('workspace','request', {address: address, addresses: coinpunk.wallet.addresses()}, function(id) {
     self.drawRequestQR(address);
   });
-}
+};
 
 coinpunk.controllers.Addresses.prototype.requestExchangeUpdate = function() {
   var amount = $('#amount').val();
   coinpunk.pricing.getLatest(function(price, currency) {
     var newAmount = parseFloat(price * amount).toFixed(2);
-    
     if(newAmount == "NaN")
       return;
-    
     $('#amountExchange').val(newAmount);
   });
 };

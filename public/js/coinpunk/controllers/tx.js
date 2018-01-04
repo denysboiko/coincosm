@@ -7,8 +7,8 @@ coinpunk.controllers.Tx.prototype.minimumConfirmationsToSpend = 1;
 coinpunk.controllers.Tx.prototype.details = function(txHash) {
   var self = this;
   $.post('/api/tx/details', {txHashes: [txHash]}, function(resp) {
-    self.render('tx/details', {tx: resp[0]}, function(id) {
-      $('#'+id+" [rel='tooltip']").tooltip();
+    self.render('workspace', 'tx/details', {tx: resp[0]}, function(id) {
+      /*$('#'+id+" [rel='tooltip']").tooltip();*/
     });
   });
 };
@@ -19,7 +19,7 @@ coinpunk.controllers.Tx.prototype.send = function() {
   this.getUnspent(function(resp) {
     coinpunk.router.render('workspace', 'tx/send', {balance: coinpunk.wallet.safeUnspentBalance()}, function(id) {
       self.updateExchangeRates(id, false);
-      $('#'+id+" [rel='tooltip']").tooltip();
+      /*$('#'+id+" [rel='tooltip']").tooltip();*/ /*   Нужно понять почему не работает (Должно)     */
     });
   });
 };

@@ -75,10 +75,6 @@ coinpunk.router.map('#/backup/download').to(function () {
     });
 });
 
-coinpunk.router.map("#/signup").to(function () {
-    coinpunk.router.render('view', 'signup');
-});
-
 coinpunk.router.map("#/signin").to(function () {
     if (coinpunk.wallet)
         return coinpunk.router.render('workspace', 'dashboard');
@@ -135,9 +131,7 @@ coinpunk.router.map('#/accounts/import').to(function () {
     }
 });
 
-coinpunk.router.map('#/node_error').to(function () {
-    coinpunk.router.render('view', 'node_error');
-});
+
 
 coinpunk.router.map('#/account/settings').to(function () {
     coinpunk.router.initWallet(function (res) {
@@ -154,11 +148,6 @@ coinpunk.router.map('#/addresses/list').to(function () {
         coinpunk.controllers.addresses.list();
     });
 });
-
-coinpunk.router.map("#/request").to(function () {
-    coinpunk.router.render("workspace", "request", {addresses: coinpunk.wallet.receiveAddresses()});
-});
-
 
 coinpunk.router.map('#/addresses/request/:address').to(function () {
     var address = this.params['address'];
@@ -178,28 +167,36 @@ coinpunk.router.map('#/buy').to(function () {
 });
 
 coinpunk.router.map('#/').to(function () {
-    /*
      if(window.navigator.registerProtocolHandler)
      window.navigator.registerProtocolHandler(
      "bitcoin",
      document.URL.substring(0,document.URL.lastIndexOf("#"))+"/?uri=%s",
      "Coinpunk"
      );
-     */
     coinpunk.router.render("view", "main");
-/*    coinpunk.router.initWallet(function (res) {
+    coinpunk.router.initWallet(function (res) {
         if(res == false)
          return;
          coinpunk.route('dashboard');
 
-    });*/
+    });
 });
 
 coinpunk.router.map("#/contacts").to(function () {
     coinpunk.router.render("workspace", "contacts");
 });
 
+coinpunk.router.map("#/request").to(function () {
+    coinpunk.router.render("workspace", "request", {addresses: coinpunk.wallet.receiveAddresses()});
+});
+
+coinpunk.router.map('#/node_error').to(function () {
+    coinpunk.router.render('view', 'node_error');
+});
+
+coinpunk.router.map("#/signup").to(function () {
+    coinpunk.router.render('view', 'signup');
+});
 
 coinpunk.router.root("#/");
 coinpunk.router.listen();
-

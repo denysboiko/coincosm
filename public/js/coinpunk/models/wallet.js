@@ -119,7 +119,7 @@ coinpunk.Wallet = function(walletKey, walletId) {
     for(var i=0;i<addresses.length;i++)
       addressHashes.push(addresses[i].address);
     return addressHashes;
-  }
+  };
 
   this.createServerKey = function() {
     this.serverKey = sjcl.codec.base64.fromBits(sjcl.misc.pbkdf2(this.walletKey, this.walletId, this.defaultIterations));

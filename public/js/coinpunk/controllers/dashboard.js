@@ -5,8 +5,8 @@ coinpunk.controllers.Dashboard.prototype = new coinpunk.Controller();
 coinpunk.controllers.Dashboard.prototype.renderDashboard = function() {
   var i = 0;
   var self = this;
-  $('#balance').text(coinpunk.wallet.safeUnspentBalance());
-  $('#pendingBalance').text(coinpunk.wallet.pendingUnspentBalance());
+  $('#balance').text(parseFloat(coinpunk.wallet.safeUnspentBalance()));
+  //$('#pendingBalance').text(coinpunk.wallet.pendingUnspentBalance());
 
   var txHashes = [];
   var txs = coinpunk.wallet.transactions;
@@ -34,13 +34,13 @@ coinpunk.controllers.Dashboard.prototype.renderDashboard = function() {
         rtxs.push(txs[i]);
 
     self.template('sentTransactions', 'dashboard/sent', {tx: stxs.reverse()}, function(id) {
-      $('#'+id+" [rel='tooltip']").tooltip();
+      //$('#'+id+" [rel='tooltip']").tooltip();
       self.updateExchangeRates(id);
     });
 
     self.template('receivedTransactions', 'dashboard/received', {category: 'Received', tx: rtxs.reverse()}, function(id) {
       self.updateExchangeRates('receivedTransactions');
-      $('#'+id+" [rel='tooltip']").tooltip();
+      //$('#'+id+" [rel='tooltip']").tooltip();
     });
   });
 };
@@ -63,15 +63,15 @@ coinpunk.controllers.Dashboard.prototype.index = function() {
 
 coinpunk.controllers.Dashboard.prototype.updateExchangeRates = function(id) {
   coinpunk.pricing.getLatest(function(price, currency) {
-    $('#balanceExchange').text(' ≈ '+ parseFloat(price * $('#balance').text()).toFixed(2));
-    $('#exchangePrice').text('1 BTC ≈ ' + price + ' ' + currency);
+    $('#balanceExchange').text(' ≈ dash' + parseFloat(price * $('#balance').text()).toFixed(2));
+    //$('#exchangePrice').text('1 BTC ≈ ' + price + ' ' + currency);
 
-    $('#'+id+' .exchangePrice').remove();
+    //$('#'+id+' .exchangePrice').remove();
 
-    var prices = $('#'+id+' .addExchangePrice');
+    /*var prices = $('#'+id+' .addExchangePrice');
     for(var i=0;i<prices.length;i++) {
       $(prices[i]).append('<span class="exchangePrice pull-right"><small>'+($(prices[i]).text().split(' ')[0] * price).toFixed(2)+' ' +currency+'</small></span>');
-    }
+    }*/
   });
 };
 
